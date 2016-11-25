@@ -14,3 +14,18 @@ run:
 "ansible-playbook pb_disable_url_block.yml" to disable. 
 
 I have a section in the /group_vars/all.yml for real dns-cache entries that you want to keep always. 
+
+
+_______________________________________________
+
+For timing I'm using crontab using a non-root user.
+Here is my crontab (edited using crontab -e)
+
+# enable filters Monday, Tuesday, Wednesday, Thursday, Friday at 5.00
+00 5 * * 1,2,3,4,5 cd /<your directory path>/timed-url-access;/usr/local/bin/ansible-playbook pb_enable_url_block.yml
+
+# disable filters in Tuesday, Wednesday, Friday at 16.00 (Monday and Thursdays are no-youtube-days)
+0 16 * * 2,3,5 cd /<your directory path>/timed-url-access;/usr/local/bin/ansible-playbook pb_disable_url_block.yml
+
+# 0 sunday, 1 monday, 2 tuesday, 3 wednesday, 4 thursday, 5 friday, 6 saturday
+
