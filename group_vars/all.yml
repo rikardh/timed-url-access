@@ -1,0 +1,19 @@
+---
+url_entries_to_be_blocked:
+  - url: googlevideo.com
+  - url: i.google.com
+  - url: m.youtube.com
+  - url: s.ytimg.com
+  - url: www.youtube.com
+  - url: youtube.l.google.com
+  - url: ytimg.com
+  - url: ytimg.l.google.com
+  - url: gorgeous.brunette.girl
+
+url_entries_untouched:
+  - url: gorgeous.brunette.girl
+    redirect_ip: 1.1.1.1
+  - url: pretty.bruneete.girl
+    redirect_ip: 2.2.2.2
+
+redirect_ip: 127.0.0.1

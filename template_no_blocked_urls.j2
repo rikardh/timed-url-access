@@ -1,0 +1,21 @@
+system {
+    services {
+        dns {
+            forwarders {
+                199.85.126.20;
+                199.85.127.20;
+            }
+            dns-proxy {
+                interface {
+                    vlan.0;
+                }
+replace:
+                cache {
+                {% for keep_url in url_entries_untouched %}
+                {{ keep_url.url }} inet {{ keep_url.redirect_ip }};
+                {% endfor %}
+                }
+            }
+        }
+    }
+}

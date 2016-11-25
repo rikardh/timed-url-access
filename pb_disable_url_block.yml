@@ -1,0 +1,17 @@
+---
+- name: Turning URL block ON
+  hosts: firewall
+  connection: local
+  gather_facts: no 
+  roles:
+  - Juniper.junos
+  tasks:
+  - name: Building configuration to push to device
+    template: src=template_no_blocked_urls.j2 dest=/tmp/dns-proxy-cache.conf
+  - name: Adding URL blocks to device
+    junos_install_config: 
+      host={{ inventory_hostname }}
+      file=/tmp/dns-proxy-cache.conf
+      overwrite=no
+      replace=yes
+      logfile=/tmp/url_block_playbook.log
