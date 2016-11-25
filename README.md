@@ -1,5 +1,5 @@
 # timed-url-access
-I'm using Juniper Networks SRX to control what time of day my kids can access certain URLs
+I'm using Juniper Networks SRX to control what time of day my kids can access youtube. 
 
 The idea is to use the SRX as a dns-proxy for your hosts and add dns cache entries that point to 127.0.0.1 or some other non-working adress.
 The dns-proxy cache works sort of like the local hosts file of a host but here this list of entries is consulted whenever a DNS query is sent through the SRX.
@@ -21,11 +21,10 @@ _______________________________________________
 For timing I'm using crontab using a non-root user.
 Here is my crontab (edited using crontab -e)
 
-# enable filters Monday, Tuesday, Wednesday, Thursday, Friday at 5.00
+The below line in crontab will enable filters Monday, Tuesday, Wednesday, Thursday, Friday at 5.00
 00 5 * * 1,2,3,4,5 cd /<your directory path>/timed-url-access;/usr/local/bin/ansible-playbook pb_enable_url_block.yml
 
-# disable filters in Tuesday, Wednesday, Friday at 16.00 (Monday and Thursdays are no-youtube-days)
+The below line will disable filters in Tuesday, Wednesday, Friday at 16.00 (Monday and Thursdays are no-youtube-days)
 0 16 * * 2,3,5 cd /<your directory path>/timed-url-access;/usr/local/bin/ansible-playbook pb_disable_url_block.yml
 
-# 0 sunday, 1 monday, 2 tuesday, 3 wednesday, 4 thursday, 5 friday, 6 saturday
 
