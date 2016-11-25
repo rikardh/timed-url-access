@@ -1,7 +1,7 @@
 # timed-url-access
 I'm using Juniper Networks SRX to control what time of day my kids can access youtube. 
 
-The idea is to use the SRX as a dns-proxy for your hosts and add dns cache entries that point to 127.0.0.1 or some other non-working adress.
+The idea is to use the SRX as a dns-proxy for your hosts and add dns cache entries that point to 127.0.0.1 or some other non-working adress. (Its not fool proof of course. Manually change the DNS in your device to bypass.)
 The dns-proxy cache works sort of like the local hosts file of a host but here this list of entries is consulted whenever a DNS query is sent through the SRX.
 
 You must enable netconf on the device using "set system services netconf ssh" and use keybased login.
